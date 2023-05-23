@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>필터활용하기</title>
+</head>
+<body>
+	<h2>필터적용하기</h2>
+	<p>
+		클라이언트가 보낸 요청에 대해 검토하는 기능<br>
+		예)이용권한 확인, 로그인여부확인, 인코딩처리, 필요 log출력<br>
+		서블릿이용시 필요한 공통로직에 대해 설정하는 객체<br>
+	</p>
+	<p>
+		필터구현하기
+		1. 일반클래스를 생성하고 Filter인터페이스를 구현한다.<br>
+		2. 생성한 클랙스를 filter로 등록
+			1) web.xml방식
+			2) 어노테이션 방식
+		3. 등록된 필터클래스를 어디에 적용할지 설정
+			1) urlpattern으로 설정
+			2) servletName으로 설정
+		
+	</p>
+	<p>
+		doFilter메소드를 재정의해서 공통의 롤직을 구현<br>
+		매개변수 세개<br>
+		1. servletRequest: HttpServletRequest의 부모로 request가 제공하는 메소드를 가지고 있음
+		2. servletResponse
+		3. FilterChain
+	</p>
+	<h3>필터적용하기</h3>
+	<h2><a href="/03_filter/basicfilter.do">기본필터적용하기</a></h2>
+	<h2><a href="/03_filter/admin/membermanager.do">회원가입</a></h2>
+	<form action="/03_filter/data.do" method="post">
+	<input type="text" value="data">
+	
+	</form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

@@ -1,9 +1,6 @@
-package com.servlet.controller;
+package com.servlet.view;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,16 +9,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class CheckDataServlet
+ * Servlet implementation class MainViewServlet
  */
-@WebServlet("/checkData.do")
-public class CheckDataServlet extends HttpServlet {
+@WebServlet("/mainView.do")
+public class MainViewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CheckDataServlet() {
+    public MainViewServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,21 +27,16 @@ public class CheckDataServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String requestData=(String)request.getAttribute("requestdata");
 		HttpSession session=request.getSession();
-		String sessionData=(String)session.getAttribute("sessiondata");
-		ServletContext context=getServletContext();
-		String contextData=(String)context.getAttribute("contextdata");
-		
+		String loginId=(String)session.getAttribute("loginId");
+		String html="";
+		if(loginId!=null) {
+			html+="<h2>"+loginId+"님 환영합니다</h2>";
+		}else {
+			html+="</h2>로그인 후 이용이 가능합니다.<h2>";
+		}
 		response.setContentType("text/html;charset=utf-8");
-		PrintWriter out=response.getWriter();
-		String html="<h3>request : "+requestData+"</h3>";
-		html+="<h3>session : "+sessionData+"</h3>";
-		html+="<h3>context : "+contextData+"</h3>";
-		html+="<button onclick=\"location.assign('/02_servletdata/checkData.do');\">checkdata제요청</button>";
-		html+="<button onclick=\"location.assign('/02_servletdata/deleteData.do');\">session삭제</button>";
-		out.write(html);
-		
+		response.getWriter().write(html);
 	}
 
 	/**
