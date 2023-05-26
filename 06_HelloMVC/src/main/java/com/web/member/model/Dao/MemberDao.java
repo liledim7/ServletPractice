@@ -41,6 +41,53 @@ public class MemberDao {
 		}return m;
 	}
 	
+	public int enrollMember(Connection conn, MemberDto m) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("enroll"));
+			pstmt.setString(1, m.getUserId());
+			pstmt.setString(2, m.getPassWord());
+			pstmt.setString(3, m.getUserName());
+			pstmt.setString(4, String.valueOf(m.getGender()));
+			pstmt.setInt(5, m.getAge());
+			pstmt.setString(6, m.getEmail());
+			pstmt.setString(7, m.getPhone());
+			pstmt.setString(8, m.getAddress());
+			pstmt.setString(9,String.join(",",m.getHobby()));
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	
+	public MemberDto selectByUserId(Connection conn, String userId) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		MemberDto m=null;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("selectByUserId"));
+			pstmt.setString(1, userId);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				m=getMember(rs);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return m;
+	}
+	
+	
+	
+	
+	
 	private MemberDto getMember(ResultSet rs) throws SQLException{
 		return MemberDto.builder().userId(rs.getString("userid")).passWord(rs.getString("password")).userName(rs.getString("username"))
 				.gender(rs.getString("gender").charAt(0)).age(rs.getInt("age")).email(rs.getString("email")).phone(rs.getString("phone"))

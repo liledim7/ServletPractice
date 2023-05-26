@@ -3,6 +3,7 @@ package com.web.member.controller;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -35,6 +36,21 @@ public class loginCheckServlet extends HttpServlet {
 		String userId=request.getParameter("userId");
 		String password=request.getParameter("password");
 		MemberDto loginMember=service.loginCheck(userId,password);
+		
+		//아이디저장 로직처리
+		String saveId=request.getParameter("saveId");
+		System.out.println(saveId);
+		
+		if(saveId!=null) {
+			Cookie c=new Cookie("saveId", userId);
+			c.setMaxAge(60*60*24*7);
+			response.addCookie(c);
+		}else {
+			Cookie c=new Cookie("saveId", "");
+			c.setMaxAge(0);
+			response.addCookie(c);
+		}
+		
 		if(loginMember!=null) {
 			HttpSession session=request.getSession();
 			session.setAttribute("loginMember", loginMember);
