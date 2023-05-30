@@ -7,8 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.web.common.AESEncryptor;
 import com.web.member.model.dto.MemberDto;
-import com.web.member.service.memberService;
+import com.web.member.service.MemberService;
 
 /**
  * Servlet implementation class EnrollMemberInserServlet
@@ -36,7 +37,17 @@ public class EnrollMemberInserServlet extends HttpServlet {
 		String name=request.getParameter("userName");
 		int age=Integer.parseInt(request.getParameter("age"));
 		String email=request.getParameter("email");
+		try {
+			email=AESEncryptor.encryptData(email);
+		}catch(Exception e) {
+			System.out.println("email암호화 실패");
+		}
 		String phone=request.getParameter("phone");
+		try {
+			phone=AESEncryptor.encryptData(phone);
+		}catch(Exception e) {
+			System.out.println("phone암호화 실패");
+		}
 		String address=request.getParameter("address");
 		char gender=request.getParameter("gender").charAt(0);
 		String hobby[]=request.getParameterValues("hobby");
@@ -50,7 +61,7 @@ public class EnrollMemberInserServlet extends HttpServlet {
 		m.setAddress(address);
 		m.setGender(gender);
 		m.setHobby(hobby);
-		memberService service=new memberService();
+		MemberService service=new MemberService();
 		int result=service.enrollMember(m);
 		String msg="",loc="";
 		if(result>0) {

@@ -59,7 +59,7 @@
 					</tr>
 					<tr>
 						<td>
-							<input type="button" value="내 정보보기">
+							<input type="button" onclick="location.assign('<%=request.getContextPath() %>/member/memberView.do?userId=<%=loginMember.getUserId() %>')" value="내 정보보기">
 							
 						</td>
 					
@@ -76,7 +76,7 @@
 			</div>
 			<nav>
 				<ul class="main-nav">
-					<li class="home"><a href="">Home</a></li>
+					<li class="home"><a href="<%=request.getContextPath()%>">Home</a></li>
 					<li id="notice"><a href="">공지사항</a></li>
 					<li id="board"><a href="">게시판</a></li>
 				</ul>

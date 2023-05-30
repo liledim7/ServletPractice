@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.web.member.model.dto.MemberDto;
-import com.web.member.service.memberService;
+import com.web.member.service.MemberService;
 
 /**
  * Servlet implementation class IdDuplicateServlet
@@ -31,7 +31,7 @@ public class IdDuplicateServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userId=request.getParameter("userId");
-		MemberDto m=new memberService().selectByUserId(userId);
+		MemberDto m=new MemberService().selectByUserId(userId);
 		
 		request.setAttribute("result", m);
 		request.getRequestDispatcher("/views/member/idDuplicate.jsp").forward(request, response);

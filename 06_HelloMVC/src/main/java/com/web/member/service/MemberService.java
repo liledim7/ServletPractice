@@ -10,7 +10,7 @@ import java.sql.Connection;
 import com.web.member.model.Dao.MemberDao;
 import com.web.member.model.dto.MemberDto;
 
-public class memberService {
+public class MemberService {
 
 	private MemberDao dao=new MemberDao(); 
 	public MemberDto loginCheck(String userId, String password) {
@@ -34,6 +34,24 @@ public class memberService {
 		MemberDto m=dao.selectByUserId(conn,userId);
 		close(conn);
 		return m;
+	}
+	
+	public int updateMember(MemberDto m) {
+		Connection conn=getConnection();
+		int result=dao.updateMember(conn, m);
+		if(result>0) commit(conn);
+		else rollback(conn);
+		close(conn);
+		return result;
+	}
+	
+	public int updatePassword(String userId, String password) {
+		Connection conn=getConnection();
+		int result=dao.updatePassword(conn,userId,password);
+		if(result>0) commit(conn);
+		else rollback(conn);
+		close(conn);
+		return result;
 	}
 }
 

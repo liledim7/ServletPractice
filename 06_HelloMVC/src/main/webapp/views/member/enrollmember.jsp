@@ -14,7 +14,7 @@
 	};
 
 	$("#password_2").keyup(e=>{
-		const password=$("password_").val();
+		const password=$("#password_").val();
 		const passwordCheck=$(e.target).val();
 		let color,msg;
 		if(password==passwordCheck){
@@ -22,8 +22,7 @@
 		}else{
 			color="red";msg="비밀번호가 일치하지 않습니다";
 		}
-		$(e.target).parents("tr").next().find("td");
-		td.html("");
+		const td=$(e.target).parents("tr").next().find("td").td.html("");
 		$("<p>").css("color",color).text(msg).appendTo(td);
 	});
 	
