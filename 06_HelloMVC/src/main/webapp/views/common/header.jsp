@@ -79,6 +79,10 @@
 					<li class="home"><a href="<%=request.getContextPath()%>">Home</a></li>
 					<li id="notice"><a href="">공지사항</a></li>
 					<li id="board"><a href="">게시판</a></li>
+					<%if(loginMember!=null&&loginMember.getUserId().equals("admin")){ %>
+					<li id="memberMangage"><a href="<%=request.getContextPath()%>/admin/memberList.do">회원관리</a></li>
+					<%} %>
+					
 				</ul>
 			</nav>
 			
@@ -100,7 +104,9 @@
 			}
 		</script>
 		
-		
+		<style>
+			
+		</style>
 		
 		
 		

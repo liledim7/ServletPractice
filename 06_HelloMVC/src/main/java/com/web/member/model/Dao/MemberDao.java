@@ -122,10 +122,20 @@ public class MemberDao {
 	
 	
 	
-	private MemberDto getMember(ResultSet rs) throws SQLException{
-		return MemberDto.builder().userId(rs.getString("userid")).passWord(rs.getString("password")).userName(rs.getString("username"))
-				.gender(rs.getString("gender").charAt(0)).age(rs.getInt("age")).email(rs.getString("email")).phone(rs.getString("phone"))
-				.address(rs.getString("address")).hobby(rs.getString("hobby").split(",")).enrollDate(rs.getDate("enrolldate")).build();
+	public static MemberDto getMember(ResultSet rs) throws SQLException{
+		return MemberDto.builder()
+				.userId(rs.getString("userid"))
+				.passWord(rs.getString("password"))
+				.userName(rs.getString("username"))
+				.age(rs.getInt("age"))
+				.gender(rs.getString("gender").charAt(0))
+				.email(rs.getString("email"))
+				.phone(rs.getString("phone"))
+				.address(rs.getString("address"))
+				.hobby(rs.getString("hobby")!=null?rs.getString("hobby").split(","):null)
+				.enrollDate(rs.getDate("enrolldate"))
+				.build();
+	
 		
 	}
 }

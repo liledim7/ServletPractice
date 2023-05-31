@@ -40,8 +40,7 @@ public class AESEncryptor {
 		System.out.println(path);
 		File keyFile=new File(this.path+"bslove.bs");
 		if(keyFile.exists()) {
-			try {
-				ObjectInputStream ois=new ObjectInputStream(new FileInputStream(keyFile));
+			try (ObjectInputStream ois=new ObjectInputStream(new FileInputStream(keyFile));){
 				AESEncryptor.key=(SecretKey)ois.readObject();
 				
 			}catch(IOException|ClassNotFoundException e) {
