@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* div{
+            background-color: green;
+        } */
+        div#header{
+            height:100px;
+            background-color: white;
+            display: flex;
+            justify-content: space-between;
+            justify-items: center;
+        }
+        div#logo>h4{
+            margin:0;
+            padding:0;
+        }
+        
+    </style>
+</head>
+<body>
+    <h2>영역태그</h2>
+    <p>
+        div: block형식을 갖는 태그로 페이지의 한개라인의 전체를 차지함
+        span: inline형식을 갖는 태그로 페이지의 한개라인의 일부를 차지하는 영역
+    </p>
+    <h3>div태그 이용하기</h3>
+    <div id="testdiv">div태그
+        <p>태그</p>
+        <h1>h1태그</h1>
+    </div>
+    <div id="testdiv">div태그2
+        <p>태그</p>
+        <h1>h1태그</h1>
+    </div>
+
+    <div id="loginform">
+        <table>
+            <tr>
+                <td>아이디</td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td>패스워드</td>
+                <td><input type="password"> </td>
+            </tr>
+        </table>
+    </div>
+    <style>
+        /* div#header,div#section,div#footer{
+            /* border:1px solid red; */
+        /* }
+        div#header{ */
+            /* height:100px;
+            background-color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        } */
+         */
+    </style>
+    <div id="header">
+        <div id="logo">logo
+            <img src="" width="200" height="100">
+            <h4>귀여운회사</h4>
+        </div>
+            
+        <div id="title">title
+            <h1>BS Company</h1>
+        </div>
+        <div id="hoinForm">loginform
+            <table>
+                <tr>
+                    <td>아이디</td>
+                    <td><input type="test"></td>
+                    <td rowspan="2"><button>로그인</button></td>
+                </tr>
+                <tr>
+                    <td>패스워드</td>
+                    <td><inpupt type="password"></td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <a href="">회원가입</a>
+                        <a href="">아이디찾기</a>
+                        <a href="">비밀번호찾기</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="section">
+
+    </div>
+    <div id="footer"></div>
+    <h3>span</h3>
+    <p>라인안에 특정태그를 지정하여 style,script를 적용할때 사용style</p>
+    <p>태그에 width, height값 적용이 않됨
+
+    </p>
+    <style>
+        strong{
+            color: red;
+            background-color: yellow;
+            width:200px;
+            height:300px;
+        }
+    </style>
+    <script>
+        document.querySelector(".storng").addEventListener("click",e=>alert(",개고생"))
+    </script>
+
+    <h2>iframe태그 이용하기</h2>
+    <p>iframe태그는 속성들을 이용해서 설정</p>
+    <p>속성: width,height,src</p>
+    <iframe src="./04_테이블태그.html" width="900" height="800"></iframe>
+    <iframe src="https://www.gdu.co.kr" width="100%" height="900"></iframe>
+    <iframe width="1280" height="720" src="https://www.youtube.com/embed/v2C-W-UwKpg" title="10평짜리 동네 김밥집이 월매출 6천? 김밥에 밥없어도 완판되는 재료폭탄 계란김밥┃Egg Omelette Gimbap / Korean street food" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+</body>
+</html>

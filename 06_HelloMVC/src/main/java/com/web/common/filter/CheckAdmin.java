@@ -17,7 +17,7 @@ import com.web.member.model.dto.MemberDto;
 /**
  * Servlet Filter implementation class CheckAdmin
  */
-@WebFilter("/admin/*")
+@WebFilter(urlPatterns = {"/admin/*","/notice/insertForm.do"})
 public class CheckAdmin extends HttpFilter implements Filter {
        
     /**

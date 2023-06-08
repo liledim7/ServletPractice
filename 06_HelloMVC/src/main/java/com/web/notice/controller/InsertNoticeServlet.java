@@ -1,28 +1,23 @@
-package com.web.admin.controller;
+package com.web.notice.controller;
 
 import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.web.admin.service.AdminService;
-import com.web.member.model.dto.MemberDto;
-
 /**
- * Servlet implementation class AdminSearchMember
+ * Servlet implementation class InsertNoticeServlet
  */
-@WebServlet("/admin/searchMember.do")
-public class AdminSearchMember extends HttpServlet {
+@WebServlet("/notice/insertForm.do")
+public class InsertNoticeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminSearchMember() {
+    public InsertNoticeServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,15 +26,7 @@ public class AdminSearchMember extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String type=request.getParameter("searchType");
-		String keyword=request.getParameter("searchKeyword");
-		
-		if(type.equals("userId")) {
-			List<MemberDto> members=new AdminService().searchById(keyword);
-			request.setAttribute("search", members);
-			request.getRequestDispatcher("/views/admin/adminMember.jsp").forward(request, response);
-		}
-		
+		request.getRequestDispatcher("/views/notice/insertNotice.jsp").forward(request, response);
 	}
 
 	/**

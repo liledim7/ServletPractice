@@ -2,7 +2,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/views/common/header.jsp"%>
-
+<%
+	String type=request.getParameter("searchType");
+	String keyword=request.getParameter("searchKeyword");
+%>
 
 <style type="text/css">
 section#memberList-container {
@@ -33,15 +36,15 @@ section#memberList-container table#tbl-member th, table#tbl-member td {
 	  <div id="search-container">
         	검색타입 : 
         	<select id="searchType">
-        		<option value="userId" >아이디</option>
-        		<option value="userName" >회원이름</option>
-        		<option value="gender" >성별</option>
+        		<option value="userId" <%=type!=null&&type.equals("userId")?"selected":"" %>>아이디</option>
+        		<option value="userName"<%=type!=null&&type.equals("userName")?"selected":"" %> >회원이름</option>
+        		<option value="gender"<%=type!=null&&type.equals("gender")?"selected":"" %> >성별</option>
         	</select>
         	<div id="search-userId">
         		<form action="<%=request.getContextPath()%>/admin/searchMember">
         			<input type="hidden" name="searchType" value="userId" >
         			<input type="text" name="searchKeyword" size="25" 
-        			placeholder="검색할 아이디를 입력하세요" >
+        			placeholder="검색할 아이디를 입력하세요" value="<%=type!=null&&type.equals("userId")?keyword:""%>">
         			<button type="submit">검색</button>
         		</form>
         	</div>
@@ -49,14 +52,14 @@ section#memberList-container table#tbl-member th, table#tbl-member td {
         		<form action="<%=request.getContextPath()%>/admin/searchMember">
         			<input type="hidden" name="searchType" value="userName">
         			<input type="text" name="searchKeyword" size="25" 
-        			placeholder="검색할 이름을 입력하세요">
+        			placeholder="검색할 이름을 입력하세요" value="<%=type!=null&&type.equals("userName")?keyword:""%>">
         			<button type="submit">검색</button>
         		</form>
         	</div>
         	<div id="search-gender">
         		<form action="<%=request.getContextPath()%>/admin/searchMember">
         			<input type="hidden" name="searchType" value="gender">
-        			<label><input type="radio" name="searchKeyword" value="M" >남</label>
+        			<label><input type="radio" name="searchKeyword" value="M" <%=type!=null&&type.equals("gender")&&keyword.equals("M")?"checked":"" %> >남</label>
         			<label><input type="radio" name="searchKeyword" value="F" >여</label>
         			<button type="submit">검색</button>
         		</form>
@@ -64,7 +67,7 @@ section#memberList-container table#tbl-member th, table#tbl-member td {
         </div>
         <div id="numPerpage-container">
         	페이지당 회원수 : 
-        	<form id="numPerFrm" action="">
+        	<%--<form id="numPerFrm" action="<%=request.getContextPath()%>/admin/memberList.do">--%>
         		<select name="numPerpage" id="numPerpage">
         			<option value="10">10</option>
         			<option value="5" >5</option>
@@ -81,6 +84,29 @@ section#memberList-container table#tbl-member th, table#tbl-member td {
 		$("#search-"+type).css("display","inline-block");
 		
 	});
+	$(()=>{
+		$("#serchType").change();
+		$("#numPerpage").change(e=>{
+			let url=location.href;
+			if(url.includes("?")){
+				url=url.substring(0,url.indexOf("?")+1)
+ 			+'searchType=<%=type%>'
+ 			+'&searchKeyword=<%=keyword%>'
+ 			+'&cPage=<%=request.getParameter("cPage")!=null
+ 				?request.getParameter("cPage"):1%>'
+ 			+'&numPerpage='+e.target.value;
+			}else{
+				url='?';
+				url+='cPage=<%=request.getParameter("cPage")!=null
+	 				?request.getParameter("cPage"):1%>'
+	 	 			+'&numPerpage='+e.target.value;
+			}
+			
+			
+			
+		});
+	})
+
 	
 	
 </script>

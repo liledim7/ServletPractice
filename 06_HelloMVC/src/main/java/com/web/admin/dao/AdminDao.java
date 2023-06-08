@@ -86,6 +86,51 @@ public class AdminDao {
 		}return members;
 	}
 	
+	public List<MemberDto> selectMemberByKeyword(Connection conn, String type, String keyword, int cPage, int numPerpage){
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String query=sql.getProperty("selectMemberByKeyword");
+		query=query.replace("#COL", type);
+		List<MemberDto> members=new ArrayList<>();
+		try {
+			pstmt=conn.prepareStatement(query);
+			pstmt.setString(1, type.equals("gender")?keyword:"%"+keyword+"%");
+			pstmt.setInt(2, (cPage-1)*numPerpage);
+			pstmt.setInt(3, cPage*numPerpage);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				members.add(getMember(rs));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return members;
+	}
+	
+	public int selectMemberByKeywordCount(Connection conn, String type, String keyword) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		int result=0;
+		String query=sql.getProperty("selectMemberByKeywordCount").replace("#COL", type);
+		try {
+			pstmt=conn.prepareStatement(query);
+			pstmt.setString(1, type.equals("gender")?keyword:"%"+keyword+"%");
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				result=rs.getInt(1);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally{
+			close(rs);
+			close(pstmt);
+		}return result;
+	}
+	
+	
+	
 	private MemberDto member(ResultSet rs) throws SQLException{
 		MemberDto m=new MemberDto();
 		m.setUserId(rs.getString("userId"));

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>ul태그 사용하기</h1>
+    <p>목록태그로 li태그를 자식태그로 갖는 태그</p>
+    <p>지정된 특수기호로 리스트를 표시</p>
+    <ul>
+        <li>html</li>
+        <li>css</li>
+        <li>javascript</li>
+        <li>jquery</li>
+    </ul>
+    <h1>ol태그 사용하기</h1>
+    <p>순서가 있는 태그로 기본적으로 숫자를 표시</p>
+    <ol>
+        <li>html</li>
+        <li>css</li>
+        <li>javascript</li>
+        <li>jquery</li>
+    </ol>
+    <h3>목록태그안에 다른 목록태그를 사용할 수 있음</h3>
+    <ol>
+        <li>샌드위치
+            <ul>
+                <li>햄치즈샌드위치</li>
+                <li>참치샌드위치</li>
+                <li>아이돌샌드위치</li>
+            </ul>
+        </li>
+
+        <li>햄버거</li>
+        <li>육회비빔밥</li>
+        <li>제육덮밥</li>
+    </ol>
+
+    <h2>ol태그는 출력되는 숫자에 대한 설정 가능</h2>
+    <p>type, start속성을 이용</p>
+    <ol type="a">
+        <li>html</li>
+        <li>css</li>
+        <li>javascript</li>
+        <li>jquery</li>
+    </ol>
+    <ol type="A">
+        <li>html</li>
+        <li>css</li>
+        <li>javascript</li>
+        <li>jquery</li>
+    </ol>
+    <ol type="i">
+        <li>html</li>
+        <li>css</li>
+        <li>javascript</li>
+        <li>jquery</li>
+    </ol>
+    <ol type="I" start="5" reversed>
+        <li>html</li>
+        <li>css</li>
+        <li>javascript</li>
+        <li>jquery</li>
+    </ol>
+
+    <h2>메뉴바 만들떄 많이 사용</h2>
+    <ul id="menu">
+        <li>HOME</li>
+        <li>Borad</li>
+        <li>Gallary</li>
+        <li>WareHouse</li>
+    </ul>
+    <style>
+        #menu>li{
+            display:inline;
+            margin-right:10px;
+            font-size:30px;
+            font-weight: bolder;
+            color:white;
+        }
+        #menu{
+            background-color: cornflowerblue;
+        }
+        #menu>li:hover{
+            color:aqua;
+            background-color: white;
+        }
+    </style>
+</body>
+</html>

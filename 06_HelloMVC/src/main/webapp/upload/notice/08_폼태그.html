@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>form태그 활용하기</h2>
+    <p>
+        프론트에서 작성한 다수의 데이터를 서버에 전송할때 사용하는 태그<br>
+        form태그는 데이터를 받을 수 있는 input태그를 자석태그로 사용<br>
+        from태그는 속성으로 action, method를 필수적으로 설정한다<br>
+        action : 요청을 보낼 주소값을 설정<br>
+        method: 데이터를 전송하는 형식을 설정(default- get)<br>
+        <dl>
+            <dt>method속성</dt>
+            <dd>GET: 데이터를 upl주소에 넣어서 전달<br>
+                간단한 조회에 사용, 게시글조회 *전송되는 데ㅣㅇ터ㅔㄹ
+            </dd>
+            <dd>
+                POST: 데이터를 request body에 넣어서 전달하는 방식<br>
+                전송되는 데이터에 제한 이없다
+            </dd>
+        </dl>
+
+    </p>
+    <div id="mathtest">
+        <h2>get방식</h2>
+        <form action="07_하이퍼링크태그.html" method="get">
+            <input type="text" name="userId"><br>
+            <input type="password" name="password"><br>
+            <input type="submit" value="로그인">
+        </form>
+        <p>input에 작성된 데이터는 주소의 ?뒤에 key=value형식으로 전송된다.<br>
+            예시) http://서버주소:포트번호/서비스맵핑주소?name속성값=value속성값&name속성값=value속성값...
+        </p>
+        <h2>post방식으로 전송하기</h2>
+        <form action="07_하이퍼링크태그.html" method="post">
+            <input type="text" name="userId"><br>
+            <input type="password" name="password"><br>
+            <input type="submit" value="로그인">
+        </form>
+        <a href="http://search.naver.com/search.naver?query=토카토카">검색하기</a>
+    </div>
+    <h2>입력형식에 대해 알아보기</h2>
+    <p>
+        사용자에게 데이터를 입력받을때는 input태그를 이용한다.<br>
+        input태그의 type속성에 따라 입력받는 UI가 달라진다.<br>
+        일반적으로 input태그는 form태그의 자식태그로 사용함<br>
+        type에 따라 value값을 고정으로 지정해줘야하는 input태그도 있다.<br>
+        input태그는 서버에 key=value형식으로 전달됨<br>
+        from태그와 같이 사용한 input태그는 반드시 name속성을 작성해줘야한다
+    </p>
+    <p>type:text * 기본문자를 입력받을때 사용 가장 많이 사용</p>
+    <p>ype:password * 보안필요한 문자를 입력받을때 사용</p>
+    <form action="#" method="get">
+        <p>
+            <span style="color: red;font-size: 25px;"></span><input type="text" name="textMsg" placeholder="메세지입력"  
+            size="3" maxlength="3" minlength="2" required>
+        </p>
+        <p><input type="password" name="password" minlength="8"></p>
+        <input type="submit" value="전송">
+    </form>
+    <h4>사용자에게 출력되지않는 input태그</h4>
+    <p>
+        type:hidden
+    </p>
+    <p>
+        클라이언트에게 보여주지않지만 내부적으로 서버에서 필요한 데이터를 전송할때 사용
+        반드시 input내부에 name, value속성을 설정한다
+    </p>
+    <h3>비밀번호변경</h3>
+    <form action="" method="get" >
+        <p><input type="hidden" name="userId" value="admin"></p>
+        <p><input type="password" name="password"></p>
+        <p><input type="password" name="chpassword"></p>
+        <p><input type="submit" value="비밀번호변경"></p >
+    </form>
+    <h4>버튼출력</h4>
+    <p>
+        input type=button속성을 이용해서 버튼을 출력<br>
+        button태그를 이용하는 방법<br>
+        * 이벤트와 연결해서 사용 -> javascript로 구현한다
+        form태그안에 button태그를 기본으로 사용하면 이 버튼은 submit과 같은 기능을 함
+    </p>
+    <div id="btnContainer">
+        <form action="" method="get">
+            <p><input type="button" value="test버튼"></p>
+            <p><button>기본버튼</button></p>
+            <p>
+                <input type="text" name="userId" id="userId" placeholder="아이디입력">
+                <button type="button" onclick="alert('아이디중복확인');">아이디 중복확인</button>
+            </p>
+
+        </form>
+    </div>
+
+    <h3>제출과 취소하는 기능</h3>
+    <p>
+        submit: form태그에 설정된 action주소에 요청을 보내는 타입 * 버튼으로 표시<br> 
+        reset: form태그 내부에 있는 input태그에 작성된 값을 모두 초기화하는 기능<br>
+    </p>
+    <form action="" method="get">
+        <p><input type="text" name="userId" placeholder="아이디입력"></p>
+        <p><input type="submit" value="제출"></p>
+        <p><input type="reset" value="취소"></p>
+    </form>
+    <h3>다중선택, 한개만 선택하는 태그</h3>
+    <p>다중선택: checkbox -> 체크표시가 가능한 네모사각형을 출력</p>
+    <p>한개만 선택: radio -> 체크표시가 가능한 동그란모형을 출력</p>
+    <p>
+        1. 두 타입 모두 다수의 태그로 생성했을때 name값을 동일하게 맞춰줘야함<br>
+        2. 두 타입 모두 정해진값에 대해 value속성을 설정해줘야함<br>
+        3. 어떤 내용을 표시하는 문구로 출력해줘야함
+    </p>
+    <div id="checkContainer">
+        <form action="" method="get">
+            <p>
+                <fieldset>
+                    <legend>취미</legend>
+                    <label><input type="checkbox" name="hobby" value="코딩" checked readonly>코딩</label>
+                    <input type="checkbox" name="hobby" value="운동" id="ex"><label for="ex">운동</label>
+                    <label><input type="checkbox" name="hobby" value="독서">독서</label>
+                </fieldset>
+            </p>
+            <p>
+                <fieldset>
+                    <legend>성별</legend>
+                    <label for="male">남</label><label for="female">여</label>
+                    <input type="radio" name="gender" value="M" id="male">남
+                    <input type="radio" name="gender" value="F" id="female">여
+                </fieldset>
+            </p>
+            <p><input type="submit" value="제출"><input type="reset" name="취소"></p> 
+        </form>
+        
+    </div>
+    <h3>파일을 입력받기</h3>
+    <p>
+        file: 파일을 서버에 전송할때 사용하는 input태그
+        form태그 내부에 input type file이 있는 경우
+        1. method속성은 POST설정해야함
+        2. enctype속성을 multipart/form-data로 설정해야함
+    </p>
+    <div id="filecontainer">
+        <form action="" method="post" enctype="multipart/form-data">
+            <input type="text" name="usertname"><br><br>
+            <input type="file" name="upfile" multiple>
+            <input type="submit" value="업로드">
+        </form>
+    </div>
+
+    <h3>sumit을 이미지로 처리하기</h3>
+    <div>
+        <form action="">
+            <input type="text" name="test">
+            <input type="image" src="./images/라라.webp" width="80" height="30">
+        </form>
+    </div>
+    <h3>날짜입력받기</h3>
+    <div id="datecontainer">
+        <form action="">
+            <p>date <input type="date" name="date" min="2022-01-01" max="2022-12-31"></p>
+            <p>datetime <input type="datetime" name="datetime"></p>
+            <p>datetime-local <input type="datetime-local" name="datetime-local"></p>
+            <p>month <input type="month" name="month"></p>
+            <p>week <input type="week" name="week"></p>
+            <p>time <input type="time" name="time"></p>
+            <p><input type="submit" value="전송"></p>
+        </form>
+    </div>
+    <h3>색상입력받기</h3>
+    <form action="">
+        color <input type="color" name="color">
+        <input type="submit"  value="컬러제출">
+    </form>
+
+    <h3>숫자, 검색어, 이메일, 홈페이지를 입력받기</h3>
+    <div id="etc">
+        <form action="">
+            number <input type="number" name="number" min="100" max="300 " step="20"><br><br>
+            search <input type="search" name="search"><br><br>
+            email <input type="email" name="email"><br><br>
+            url <input type="url" name="url"><br><br>
+            <input type="submit" value="제출">
+        </form>
+    </div>
+
+    <h3>input태그와 데이터를 입력받는 태그들</h3>
+    <p>
+        select: 콤보박스로 데이터를 받는 것 -> 검색에 항복을 입력받을때, 정해진 데이터 한개를 입력받는것<br>
+        textarea: 멀티라인으로 문자열 데이터를 받는 것
+    </p>
+    <div id="extracontainer">
+        <form action="">
+            <select name="searchkeyword">
+                <option value="title">제목</option>
+                <option value="content">내용</option>
+                <option value="writer" selected>작성자</option>
+            </select>
+            <input type="text" name="keyword">
+            <input type="submit" value="검색">
+
+            <select name="city">
+                <optgroup label="광역시">
+
+                
+                    <option value="서울">서울</option>
+                    <option value="부산">부산</option>
+                    <option value="인천">인천</option>
+                </optgroup>    
+                <optgroup>
+                    <option value="안산">안산</option>
+                    <option value="시흥">시흥</option>
+                </optgroup>
+            </select>
+            <textarea name="info" rows="10"></textarea>
+        </form>
+    </div>
+    <h2>작성추천내용출력</h2>
+
+
+    <script>
+        setInterval(()=> {document.getElementById("p").value+=Math.floor(Math.random()*10)+1;},1000);
+    </script>
+</body> 
+</html>

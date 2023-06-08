@@ -1,28 +1,26 @@
-package com.web.admin.controller;
+package com.web.notice.controller;
 
 import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.web.admin.service.AdminService;
-import com.web.member.model.dto.MemberDto;
+import com.web.notice.model.dto.Notice;
+import com.web.notice.model.service.NoticeService;
 
 /**
- * Servlet implementation class AdminSearchMember
+ * Servlet implementation class NoticeViewServlet
  */
-@WebServlet("/admin/searchMember.do")
-public class AdminSearchMember extends HttpServlet {
+@WebServlet("/notice/noticeView.do")
+public class NoticeViewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminSearchMember() {
+    public NoticeViewServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,15 +29,10 @@ public class AdminSearchMember extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String type=request.getParameter("searchType");
-		String keyword=request.getParameter("searchKeyword");
-		
-		if(type.equals("userId")) {
-			List<MemberDto> members=new AdminService().searchById(keyword);
-			request.setAttribute("search", members);
-			request.getRequestDispatcher("/views/admin/adminMember.jsp").forward(request, response);
-		}
-		
+		int no=Integer.parseInt(request.getParameter("no"));
+		Notice n=new NoticeService().selectNoticeByNo(no);
+		request.setAttribute("notice", n);
+		request.getRequestDispatcher("/views/notice/noticeView.jsp").forward(request, response);
 	}
 
 	/**

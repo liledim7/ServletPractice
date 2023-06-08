@@ -12,6 +12,8 @@ import com.web.member.model.dto.MemberDto;
 public class AdminService {
 	
 
+	
+	
 	AdminDao dao=new AdminDao();
 	public List<MemberDto> memberList(int cPage,int numPerpage){
 		Connection conn=getConnection();
@@ -33,4 +35,33 @@ public class AdminService {
 		close(conn);
 		return members;
 	}
+	
+	public List<MemberDto> selectMemberByKeyword(String type, String keyword, int cPage, int numPerpage){
+		Connection conn=getConnection();
+		List<MemberDto> members=dao.selectMemberByKeyword(conn,type,keyword,cPage,numPerpage);
+		close(conn);
+		return members;
+	}
+	
+	public int selectMemberByKeywordCount(String type, String keyword) {
+		Connection conn=getConnection();
+		int count=dao.selectMemberByKeywordCount(conn,type,keyword);
+		close(conn);
+		return count;
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
