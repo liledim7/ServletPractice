@@ -15,7 +15,7 @@ import com.web.member.service.MemberService;
 /**
  * Servlet implementation class loginCheck
  */
-@WebServlet(name="login", urlPatterns="/loginCheck.do")
+@WebServlet(name="login", urlPatterns={"/loginCheck.do","/board/loginCheck.do","/notice/loginCheck.do"})
 public class loginCheckServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -54,6 +54,7 @@ public class loginCheckServlet extends HttpServlet {
 		if(loginMember!=null) {
 			HttpSession session=request.getSession();
 			session.setAttribute("loginMember", loginMember);
+			
 			response.sendRedirect(request.getContextPath());
 			
 		}else {
