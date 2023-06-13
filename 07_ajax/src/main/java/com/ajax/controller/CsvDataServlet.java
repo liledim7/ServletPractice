@@ -1,6 +1,7 @@
-package com.web.member.controller;
+package com.ajax.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,20 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.web.member.model.dto.MemberDto;
-import com.web.member.service.MemberService;
+import com.ajax.model.dto.Actor;
 
 /**
- * Servlet implementation class IdDuplicateServlet
+ * Servlet implementation class CsvDataServlet
  */
-@WebServlet("/member/idDuplicate.do")
-public class IdDuplicateServlet extends HttpServlet {
+@WebServlet("/ajax/csvdata.do")
+public class CsvDataServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public IdDuplicateServlet() {
+    public CsvDataServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,13 +30,22 @@ public class IdDuplicateServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userId=request.getParameter("userId");
-		MemberDto m=new MemberService().selectByUserId(userId);
+		List<Actor> actors=List.of(
+				Actor.builder().name("박보검").phone("01043259874").profile("parkBogum.jpg").build(),
+				Actor.builder().name("쥴리아로버츠").phone("01023486637").profile("juliaRoberts.jpg").build(),
+				Actor.builder().name("멧데이먼").phone("01012243152").profile("mattDamon.jpg").build()
+				);
+		String csv="";
+		for(int i=0;i<actors.size();i++) {
+			if(i!=0) csv+="\n";
+			csv+=actors.get(i);
+		}
 		
-		request.setAttribute("result", m);
-		request.getRequestDispatcher("/views/member/idDuplicate.jsp").forward(request, response);
+		System.out.println(csv);
 		
-		
+		response.setContentType("text/csv;charset=utf-8");
+		response.getWriter().print(csv);
+				
 	}
 
 	/**

@@ -28,9 +28,11 @@
     table#tbl-comment tr td:first-of-type{padding: 5px 5px 5px 50px;}
     table#tbl-comment tr td:last-of-type {text-align:right; width: 100px;}
     table#tbl-comment button.btn-reply{display:none;}
+    table#tbl-comment button.btn-update{display:none;}
     table#tbl-comment button.btn-delete{display:none;}
     table#tbl-comment tr:hover {background:lightgray;}
     table#tbl-comment tr:hover button.btn-reply{display:inline;}
+    table#tbl-comment tr:hover button.btn-update{display:inline;}
     table#tbl-comment tr:hover button.btn-delete{display:inline;}
     table#tbl-comment tr.level2 {color:gray; font-size: 14px;}
     table#tbl-comment sub.comment-writer {color:navy; font-size:14px}
@@ -102,7 +104,9 @@
  	</div>  
  	<table id="tbl-comment">
  	<%if(comments!=null){ 
- 		for(BoardComment bc:comments){%>
+ 		for(BoardComment bc:comments){
+ 		if(bc.getLevel()==1){
+ 		%>
  		<tr class="level1">
  			<td>
  				<sub><%=bc.getBoardCommentWriter() %></sub>
@@ -113,14 +117,24 @@
  			
  			<td>
  			<%if(loginMember!=null&&(loginMember.getUserId().equals(bc.getBoardCommentWriter())||loginMember.getUserId().equals("admin"))){ %>
- 				<button class="btn-reply">답글</button>
- 				<button class="btn-reply">수정</button>
- 				<button class="btn-reply">삭제</button>
+ 				<button class="btn-reply" value="<%=bc.getBoardCommentNo()%>">답글</button>
+ 				<button class="btn-update">수정</button>
+ 				<button class="btn-delete">삭제</button>
  			<%} %>
  			</td>
  			
  		</tr>
- 	<%} }%>
+ 	<%}else{%> 
+	<tr class="level2">
+	<td>
+		<sub class="comment-writer"><%=bc.getBoardCommentWriter() %></sub>
+		<sub class="comment-date"><%=bc.getBoardCommentDate() %></sub>
+		<br>
+		<%=bc.getBoardCommentContent() %>
+	</td>
+	<td></td>
+</tr> 
+<%} } }%>
  		
  	</table>
     </section>
@@ -131,6 +145,26 @@
     		$("#userId").focus();
     	}
     	});
+    	
+    	
+    	$(".btn-reply").click(e=>{
+    		const tr=$("<tr>");
+    		const td=$("<td>").attr("colspan","2");
+    		const boardCommentRef=$(e.target).val();
+    		const form=$(".comment-editor>form").clone();
+    		form.find("textarea").attr("rows","1");
+    		form.find("input[name=level]").val("2");
+    		form.find("input[name=boardCommentRef]").val(boardCommentRef);
+    	
+    		td.css("displaly","none");
+    		td.append(form);
+    		tr.append(td);
+    		
+    		//$(e.target).parents("tr").after(tr.children("td").slideDown(800));
+    		tr.insertAfter($(e.target).parents("tr")).children("td").slideDown(800);
+    		$(e.target).off("click");
+    	});
+    	
     </script>
     <%@ include file="/views/common/footer.jsp"%>
 </body>

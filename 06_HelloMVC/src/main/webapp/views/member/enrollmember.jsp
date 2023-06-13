@@ -32,9 +32,42 @@
 			open("<%=request.getContextPath()%>/member/idDuplicate.do?userId="+userId,"_blank","width=300, height=200");
 		}else{
 			alert("id는 4글자이상");
+			
 		}
 		
 	};
+	
+	$("#userId_").keyup(e=>{
+		if(e.target.value.length>=4){
+			$.ajax({
+			url:"<%=request.getContextPath()%>/ajaxDuplicated.do",
+			data:{"userId":$(e.target).val()},
+			success:function(data){
+				let msg="",css={};
+				if(data=='true'){
+					msg="사용가능한 아이디입니다.";
+					css={color:'green'};
+				}else{
+					msg="사용 불가능한 아이디입니다.";
+					css={color:"red"};
+				}
+				const tr=$("<tr>");
+				const td=$("<td colspan='2'>").text(msg).css(css);
+				tr.append(td);
+				if($(e.target).parents("tr").next().find("input").length==0){
+					$(e.target).parents("tr").next().remove();
+					
+				}
+				$(e.target).parents("tr").after(tr);
+			},
+			error:function(r,m);
+				console.log(r);
+				console.log(m);
+		}
+		
+		
+		});
+	});
 	
 </script>
 

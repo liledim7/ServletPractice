@@ -1,6 +1,7 @@
-package com.web.member.controller;
+package com.web.admin.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,20 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.web.admin.service.AdminService;
 import com.web.member.model.dto.MemberDto;
-import com.web.member.service.MemberService;
 
 /**
- * Servlet implementation class IdDuplicateServlet
+ * Servlet implementation class AdminSearchMember
  */
-@WebServlet("/member/idDuplicate.do")
-public class IdDuplicateServlet extends HttpServlet {
+@WebServlet("/admin/searchMember.do")
+public class AdminSearchMember extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public IdDuplicateServlet() {
+    public AdminSearchMember() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,12 +31,14 @@ public class IdDuplicateServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userId=request.getParameter("userId");
-		MemberDto m=new MemberService().selectByUserId(userId);
+		String type=request.getParameter("searchType");
+		String keyword=request.getParameter("searchKeyword");
 		
-		request.setAttribute("result", m);
-		request.getRequestDispatcher("/views/member/idDuplicate.jsp").forward(request, response);
-		
+		if(type.equals("userId")) {
+			List<MemberDto> members=new AdminService().searchById(keyword);
+			request.setAttribute("search", members);
+			request.getRequestDispatcher("/views/admin/adminMember.jsp").forward(request, response);
+		}
 		
 	}
 

@@ -1,7 +1,6 @@
-package com.web.member.controller;
+package com.web.notice.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,16 +11,16 @@ import com.web.member.model.dto.MemberDto;
 import com.web.member.service.MemberService;
 
 /**
- * Servlet implementation class IdDuplicateServlet
+ * Servlet implementation class AjaxDulicateIdServlet
  */
-@WebServlet("/member/idDuplicate.do")
-public class IdDuplicateServlet extends HttpServlet {
+@WebServlet("/ajaxDuplicated.do")
+public class AjaxDulicateIdServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public IdDuplicateServlet() {
+    public AjaxDulicateIdServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,11 +31,8 @@ public class IdDuplicateServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userId=request.getParameter("userId");
 		MemberDto m=new MemberService().selectByUserId(userId);
-		
-		request.setAttribute("result", m);
-		request.getRequestDispatcher("/views/member/idDuplicate.jsp").forward(request, response);
-		
-		
+		response.setContentType("text/csv;charset=utf-8");
+		response.getWriter().print(m==null?true:false);
 	}
 
 	/**
