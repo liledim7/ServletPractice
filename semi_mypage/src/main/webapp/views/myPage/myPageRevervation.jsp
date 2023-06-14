@@ -59,14 +59,14 @@
                 <th>예약객실</th>
                 <th>예약상태</th>
                 <th>예약날짜</th>
-                <th></th>
+                <th>비고</th>
               </tr>
             </thead>
             <tbody>
               <!-- 
                             결제내역이 없을떄
                             <tr>
-                              <td colspan="5">예약내역이 없습니다</td>
+                              <td colspan="5" class="text-center">예약내역이 없습니다</td>
                             </tr>
                            -->
               <tr>
@@ -125,7 +125,7 @@
 
 
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
 
 <%@ include file="/views/common/footer.jsp"%>
 

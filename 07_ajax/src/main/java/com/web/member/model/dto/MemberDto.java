@@ -1,6 +1,6 @@
 package com.web.member.model.dto;
 
-import java.sql.Date;
+import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 
@@ -32,6 +32,6 @@ public class MemberDto {
 	
 	@Override
 	public String toString() {
-		return userId+"$"+userName+"$"+age+"$"+gender+"$"+email+"$"+phone+"$"+address+"$"+Arrays.toString(hobby)+"$"+new SimpleDateFormat("yyyy-mm-dd").format(enrollDate);
+		return userId+"$"+userName+"$"+age+"$"+gender+"$"+email+"$"+phone+"$"+address+"$"+Arrays.toString(hobby)+"$"+new SimpleDateFormat("yyyy-MM-dd").format(enrollDate);
 	}
 }

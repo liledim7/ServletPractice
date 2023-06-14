@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.web.common.AESEncryptor;
+//import com.web.common.AESEncryptor;
 import com.web.member.model.dto.MemberDto;
 import com.web.member.service.MemberService;
 
@@ -37,17 +37,18 @@ public class EnrollMemberInserServlet extends HttpServlet {
 		String name=request.getParameter("userName");
 		int age=Integer.parseInt(request.getParameter("age"));
 		String email=request.getParameter("email");
-		try {
-			email=AESEncryptor.encryptData(email);
-		}catch(Exception e) {
-			System.out.println("email암호화 실패");
-		}
+//		try {
+//			email=AESEncryptor.encryptData(email);
+//		}catch(Exception e) {
+//			System.out.println("email암호화 실패");
+//		}
+//		String phone=request.getParameter("phone");
+//		try {
+//			phone=AESEncryptor.encryptData(phone);
+//		}catch(Exception e) {
+//			System.out.println("phone암호화 실패");
+//		}
 		String phone=request.getParameter("phone");
-		try {
-			phone=AESEncryptor.encryptData(phone);
-		}catch(Exception e) {
-			System.out.println("phone암호화 실패");
-		}
 		String address=request.getParameter("address");
 		char gender=request.getParameter("gender").charAt(0);
 		String hobby[]=request.getParameterValues("hobby");

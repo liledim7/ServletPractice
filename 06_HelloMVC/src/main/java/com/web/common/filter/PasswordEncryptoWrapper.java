@@ -22,9 +22,9 @@ public class PasswordEncryptoWrapper extends HttpServletRequestWrapper{
 			System.out.println("원본: "+super.getParameter(key));
 			String encryptData=getSHA512(super.getParameter(key));
 			System.out.println("암호화: " + encryptData);
-			return encryptData;
+			return encryptData;//password일경우 암호화비밀번호 리턴
 		}
-		return oriVal;
+		return oriVal;//아닐경우 원본값 그대로 리턴
 	}
 
 	

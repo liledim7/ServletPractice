@@ -31,7 +31,7 @@
 					<tr>
 						<td>
 							<input type="text" name="userId" id="userId" placeholder="아이디" value="<%=saveId!=null?saveId:""%>">
-							<input type="text" name="password" id="password" placeholder="패스워드">
+							<input type="password" name="password" id="password" placeholder="패스워드">
 						</td>
 						<td>
 							<input type="submit" value="로그인">
@@ -85,7 +85,7 @@
 					
 				</ul>
 			</nav>
-			
+			</div>
 		</header>
 		<script>
 			const fn_validation=()=>{

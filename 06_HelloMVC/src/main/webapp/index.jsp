@@ -10,7 +10,9 @@
 				<div id="memberList"></div>
 			</section>
 			
+	
 	<script>
+	
 	$("#memberAll").click(e=>{
 		$.get("<%=request.getContextPath()%>/memberList.do",
 			
@@ -25,6 +27,7 @@
 					table+="<td>"+data[i].age+"</td>";
 					table+="<td>"+data[i].email+"</td>";
 					table+="</tr>";
+					
 					$("#memberList").append(table);
 				}
 				

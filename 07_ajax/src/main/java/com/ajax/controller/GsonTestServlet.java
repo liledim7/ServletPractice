@@ -47,6 +47,10 @@ public class GsonTestServlet extends HttpServlet {
 		response.setContentType("application/json;charset=utf-8");
 		gson.toJson(list,response.getWriter());
 		
+		String data=request.getParameter("data");
+		MemberDto requestData=gson.fromJson(data, MemberDto.class);
+		System.out.println(requestData);
+		//gson.fromJson(); vo객체로 만들어줌 -> Json형태로 전송된 데이터
 	}
 
 	/**

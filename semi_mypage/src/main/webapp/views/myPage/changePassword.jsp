@@ -77,7 +77,7 @@
 
 
 
-    <link rel="stylesheet" href="style.css">
+
 
     <div id="footer" style="bottom:0px">
         <div class="inner">

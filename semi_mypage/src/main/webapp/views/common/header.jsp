@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" type="text/css">
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="#"><img src="./images/casa64.png" width="120px"></a>

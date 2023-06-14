@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.web.common.AESEncryptor;
+//import com.web.common.AESEncryptor;
 import com.web.member.model.dto.MemberDto;
 import com.web.member.service.MemberService;
 
@@ -36,16 +36,16 @@ public class MemberViewServlet extends HttpServlet {
 		String userId=request.getParameter("userId");
 		
 		MemberDto m=new MemberService().selectByUserId(userId);
-		try {
-			m.setEmail(AESEncryptor.decryptData(m.getEmail()));
-		}catch(Exception e) {
-			
-		}
-		try {
-			m.setPhone(AESEncryptor.decryptData(m.getPhone()));
-		}catch(Exception e) {
-			
-		}
+//		try {
+//			m.setEmail(AESEncryptor.decryptData(m.getEmail()));
+//		}catch(Exception e) {
+//			
+//		}
+//		try {
+//			m.setPhone(AESEncryptor.decryptData(m.getPhone()));
+//		}catch(Exception e) {
+//			
+//		}
 		
 		request.setAttribute("infoMember", m);
 		request.getRequestDispatcher("/views/member/memberView.jsp").forward(request, response);

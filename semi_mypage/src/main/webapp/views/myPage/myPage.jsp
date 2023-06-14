@@ -12,6 +12,7 @@
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <script src="http://code.jquery.com/jquery-3.7.0.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+   
 </head>
 
 <body>
@@ -20,6 +21,7 @@
 
     <div class="row bg-light text-dark min-vh-100">
       <div class="mt-5 col-3">
+      	
         <div class="card" style="width: 15rem;">
           <div class="card-body">
             <h5 class="card-title">**님의 myPage입니다</h5>
@@ -27,9 +29,11 @@
             <a href="<%=request.getContextPath()%>/views/myPage/myPageInfo.jsp" class="btn btn-secondary">내 정보보기</a>
 
           </div>
+        
         </div>
         <!-- nav -->
-        <nav class="mt-5 nav flex-column" >
+        
+        <nav class="mt-5 nav flex-column col-10" >
           <a href="#" class="nav-link link-dark" aria-current="true" >
             <i class="bi bi-house-fill"></i>
             마이페이지홈
@@ -45,6 +49,7 @@
             후기</a>
 
         </nav>
+       
       </div>
       <div class="mt-5 col">
         <span>최근 예약목록</span>
@@ -93,7 +98,7 @@
 <%@ include file="/views/common/footer.jsp"%>
 
 
-  <link rel="stylesheet" href="style.css">
+
 
 
 

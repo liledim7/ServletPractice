@@ -42,23 +42,25 @@
         </nav>
             </div>
             <div class="mt-5 col-5" >
-                <div class="p-5 bg-white border border-secondary rounded">
+            
+                <div class="p-5 bg-white border border-secondary rounded text-center">
+                 	
                     <form action="" class="form-floating">
-                      
+                     	
                         <div class="input-group mb-3">
-                          <span class="input-group-text" id="">닉네임</span>
+                          <span class="input-group-text" id="nick">닉네임</span>
                             <input type="password" class="form-control" id="password1" placeholder="기존닉네임">
                         </div>
                         
                         <div class="input-group mb-3">
                             
-                            <input type="text" class="form-control" id="email">
-                            <span class="input-group-text" id="">@example.com</span>
+                            <input type="text" class="form-control" id="email" placeholder="기존이메일">
+                            <span class="input-group-text"  >@example.com</span>
                         </div>
                         
                         <div class="input-group mb-3">
-                          <span class="input-group-text" id="">전화번호</span>
-                            <input type="text" class="form-control" id="phone">
+                          <span class="input-group-text">전화번호</span>
+                            <input type="text" class="form-control" id="phone" placeholder="기존전화번호">
                         </div>
                         <div class="d-grid gap-2">
                             <button class="btn btn-dark" type="button">확인</button>
@@ -78,7 +80,7 @@
 
 
 
-    <link rel="stylesheet" href="style.css">
+  
 
     <%@ include file="/views/common/footer.jsp"%>
 
