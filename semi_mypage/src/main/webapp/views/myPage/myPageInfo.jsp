@@ -21,7 +21,10 @@
 </head>
 <body>
 	<div class="container-fluid min-vh-100 justify-content-center">
-
+	<div class="row mt-3 mx-1 border-primary border-bottom border-2"  style="height:5rem">
+			<div class="col  text-center "><h2>회원정보</h2></div>
+			
+		</div>
 		<div class="row text-dark min-vh-100">
 			<div class="mt-5 col-2 border-end">
 				<div class="card" style="width: 15rem;">
@@ -29,8 +32,8 @@
 						<h5 class="card-title">**님의 myPage입니다</h5>
 						<p class="card-text"></p>
 						<a
-							href="<%=request.getContextPath()%>/views/myPage/myPageInfo.jsp"
-							class="btn btn-dark">내 정보보기</a>
+							data-bs-toggle="modal" data-bs-target="#passwordcheckMyinfo"
+							class="btn btn-primary">회원정보변경</a>
 
 					</div>
 				</div>
@@ -38,10 +41,10 @@
 			</div>
 
 			<div class="mt-5 col-5 mx-auto">
-				<span class="text-center text-black-50"><h5>내 정보</h5></span>
+				
 				<div class="tb">
-					<table border="1" width="100%"
-						class="table table-borderd table-hover">
+					<table 
+						class="table table-hover text-center">
 						<colgroup>
 							<col width="30%">
 							<col width="40%">
@@ -55,9 +58,9 @@
 							</tr>
 							<tr>
 								<td>닉네임</td>
-								<td>곰돌이</td>
+								<td>유저닉네임</td>
 								<td><button type="button"
-										class="btn btn-outline-dark btn-sm" data-bs-toggle="modal"
+										class="btn btn-primary btn-sm" data-bs-toggle="modal"
 										data-bs-target="#passwordcheckMyinfo">수정</button></td>
 							</tr>
 							<tr>
@@ -69,7 +72,7 @@
 								<td>비밀번호 변경</td>
 								<td></td>
 								<td>
-									<button type="button" class="btn btn-outline-dark btn-sm"
+									<button type="button" class="btn btn btn-primary btn-sm"
 										data-bs-toggle="modal" data-bs-target="#staticBackdrop">변경</button>
 								</td>
 								<!-- Modal -->
@@ -106,14 +109,14 @@
 								<td>전화번호</td>
 								<td>010-1234-5678</td>
 								<td><button type="button"
-										class="btn btn-outline-dark btn-sm" data-bs-toggle="modal"
+										class="btn btn-primary btn-sm" data-bs-toggle="modal"
 										data-bs-target="#passwordcheckMyinfo">수정</button></td>
 							</tr>
 							<tr>
 								<td>회원탈퇴</td>
 								<td></td>
 								<td><button type="button"
-										class="btn btn-outline-danger btn-sm"
+										class="btn btn-danger btn-sm"
 										onclick="location.href='<%=request.getContextPath()%>/views/myPage/memberOut.jsp'">탈퇴</button></td>
 
 							</tr>

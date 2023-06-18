@@ -24,8 +24,8 @@
 <body>
 	<div class="container-fluid">
 
-		<div class="row">
-			<div class="col text-center mx-auto"><h2>마이페이지</h2></div>
+		<div class="row mt-3 mx-1 border-primary border-bottom border-2"  style="height:5rem">
+			<div class="col  text-center "><h2>마이페이지</h2></div>
 			
 		</div>
 		<div class="row min-vh-100">
@@ -36,8 +36,8 @@
 						<h5 class="card-title">**님의 myPage입니다</h5>
 						<p class="card-text"></p>
 						<a
-							href="<%=request.getContextPath()%>/views/myPage/myPageInfo.jsp"
-							class="btn btn-primary">내 정보보기</a>
+							data-bs-toggle="modal" data-bs-target="#passwordcheckMyinfo"
+							class="btn btn-primary">회원정보변경</a>
 
 					</div>
 

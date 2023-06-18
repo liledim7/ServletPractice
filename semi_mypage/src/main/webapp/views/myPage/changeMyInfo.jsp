@@ -22,7 +22,10 @@
 
 <body>
 	<div class="container-fluid min-vh-100 justify-content-center">
-
+	<div class="row mt-3 mx-1 border-primary border-bottom border-2"  style="height:5rem">
+			<div class="col  text-center "><h2>회원정보변경</h2></div>
+			
+		</div>
 		<div class="row text-dark min-vh-100">
 			<div class="mt-5 col-2 border-end">
 				<div class="card" style="width: 15rem;">
@@ -30,8 +33,8 @@
 						<h5 class="card-title">**님의 myPage입니다</h5>
 						<p class="card-text"></p>
 						<a
-							href="<%=request.getContextPath()%>/views/myPage/myPageInfo.jsp"
-							class="btn btn-dark">내 정보보기</a>
+							data-bs-toggle="modal" data-bs-target="#passwordcheckMyinfo"
+							class="btn btn-primary">회원정보변경</a>
 
 					</div>
 				</div>
@@ -39,21 +42,21 @@
 				<!-- nav -->
 
 				<nav class="mt-5 nav flex-column col-10">
-					<button class="btn btn-light text-start"
+					<button class="btn text-start"
 						onclick="location.href='<%=request.getContextPath()%>/views/myPage/myPage.jsp'">
 						<i class="bi bi-house-fill"></i> 마이페이지홈
 					</button>
 
-					<button class="btn btn-light text-start"
-						onclick="location.href='<%=request.getContextPath()%>/views/myPage/changeMyInfo.jsp'">
-						<i class="bi bi-journal-text"></i> 내 정보수정
+					<button class="btn text-start"
+						onclick="location.href='<%=request.getContextPath()%>/views/myPage/MyPageInfo.jsp'">
+						<i class="bi bi-journal-text"></i> 회원정보보기
 					</button>
 
-					<button class="btn btn-light text-start"
+					<button class="btn text-start"
 						onclick="location.href='<%=request.getContextPath()%>/views/myPage/myPageRevervation.jsp'">
 						<i class="bi bi-calendar-check"></i> 예약내역
 					</button>
-					<button class="btn btn-light text-start"
+					<button class="btn text-start"
 						onclick="location.href='<%=request.getContextPath()%>/views/myPage/myPageReview.jsp'">
 						<i class="bi bi-file-earmark-medical"></i> 후기
 					</button>
@@ -62,7 +65,7 @@
 
 			</div>
 			<div class="mt-5 col-5 mx-auto">
-				<span class="text-center text-black-100"><h4>내 정보 수정</h4></span>
+				<span class="text-center text-black-100"></span>
 				<div class="p-5 mt-4 bg-white border border-secondary rounded text-center">
 
 					<form action="" class="form-floating">

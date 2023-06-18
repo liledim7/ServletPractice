@@ -20,7 +20,10 @@
 </head>
 <body>
 	<div class="container-fluid min-vh-100">
-
+	<div class="row mt-3 mx-1 border-primary border-bottom border-2"  style="height:5rem">
+			<div class="col  text-center "><h2>예약내역</h2></div>
+			
+		</div>
 		<div class="row text-dark min-vh-100">
 			<div class="mt-5 col-2 border-end">
 				<div class="card" style="width: 15rem;">
@@ -28,8 +31,8 @@
 						<h5 class="card-title">**님의 myPage입니다</h5>
 						<p class="card-text"></p>
 						<a
-							href="<%=request.getContextPath()%>/views/myPage/myPageInfo.jsp"
-							class="btn btn-dark">내 정보보기</a>
+							data-bs-toggle="modal" data-bs-target="#passwordcheckMyinfo"
+							class="btn btn-primary">회원정보변경</a>
 
 					</div>
 				</div>
@@ -39,7 +42,7 @@
 			</div>
 
 			<div class="mt-5 col-7 mx-auto">
-				<span class="text-center text-black-100"><h4>예약내역</h4></span>
+				
 				<div class="tb">
 					<table class="table table-hover text-center">
 						<colgroup>

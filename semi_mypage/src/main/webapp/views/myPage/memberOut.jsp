@@ -21,7 +21,10 @@
 
 <body>
 	<div class="container-fluid">
-
+	<div class="row mt-3 mx-1 border-primary border-bottom border-2"  style="height:5rem">
+			<div class="col  text-center "><h2>회원탈퇴</h2></div>
+			
+		</div>
 		<div class="row text-dark min-vh-100">
 			<div class="mt-5 col-2 border-end">
 				<div class="card" style="width: 15rem;">
@@ -29,15 +32,15 @@
 						<h5 class="card-title">**님의 myPage입니다</h5>
 						<p class="card-text"></p>
 						<a
-							href="<%=request.getContextPath()%>/views/myPage/myPageInfo.jsp"
-							class="btn btn-dark">내 정보보기</a>
+							data-bs-toggle="modal" data-bs-target="#passwordcheckMyinfo"
+							class="btn btn-primary">회원정보변경</a>
 
 					</div>
 				</div>
 				<%@ include file="/views/common/asideNav.jsp"%>
 			</div>
 			<div class="mt-5 col-7 mx-auto">
-				<div class="p-3 border border-secondary rounded">
+				<div class="p-3">
 					<div>
 						<h5>
 							<i class="bi bi-exclamation-circle"></i> 탈퇴 안내
@@ -57,24 +60,24 @@
 							있습니다.
 						</h5>
 					</div>
-					<div>
+					
 						<div class="border text-center mt-5 my-3">
 							회원탈퇴하려는 계정 : asdf@btc.com
 						</div>
 						
 						
-						<form action="">
+						<form action="" class="pt-3">
 							<input class="form-check-input" type="checkbox" value=""
 								id="flexCheckDefault"> <label class="form-check-label"
 								for="flexCheckDefault"> 안내 사항을 모두 확인하였으며, 이에 동의합니다. </label>
 								
 						
-							<div id="outCheck">
-								<button type="button" class="btn btn-dark">확인</button>
+							<div class="mt-3 text-center">
+								<button type="button" class="btn btn-primary">확인</button>
 							</div>
 
 						</form>
-					</div>
+					
 				</div>
 			</div>
 

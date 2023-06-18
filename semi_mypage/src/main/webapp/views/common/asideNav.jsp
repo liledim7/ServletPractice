@@ -3,12 +3,12 @@
 
 
 <nav class="mt-5 nav flex-column col-10">
-	<button class="btn btn-light text-start" onclick="location.href='<%=request.getContextPath()%>/views/myPage/myPage.jsp'">
+	<button class="btn text-start" onclick="location.href='<%=request.getContextPath()%>/views/myPage/myPage.jsp'">
 		<i class="bi bi-house-fill"></i> 마이페이지홈
 	</button>
 
-	<button class="btn btn-light text-start" data-bs-toggle="modal" data-bs-target="#passwordcheckMyinfo">
-		<i class="bi bi-journal-text"></i> 내 정보수정
+	<button class="btn text-start" onclick="location.href='<%=request.getContextPath()%>/views/myPage/myPageInfo.jsp'">
+		<i class="bi bi-journal-text"></i> 회원정보보기
 	</button>
 
 	<!-- Modal -->
@@ -30,10 +30,10 @@
 		</div>
 	</div>
 
-	<button class="btn btn-light text-start" onclick="location.href='<%=request.getContextPath()%>/views/myPage/myPageRevervation.jsp'">
+	<button class="btn text-start" onclick="location.href='<%=request.getContextPath()%>/views/myPage/myPageRevervation.jsp'">
 		<i class="bi bi-calendar-check"></i> 예약내역
 	</button>
-	<button class="btn btn-light text-start" onclick="location.href='<%=request.getContextPath()%>/views/myPage/myPageReview.jsp'">
+	<button class="btn text-start" onclick="location.href='<%=request.getContextPath()%>/views/myPage/myPageReview.jsp'">
 		<i class="bi bi-file-earmark-medical"></i> 후기
 	</button>
 
